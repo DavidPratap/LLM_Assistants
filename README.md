@@ -1,0 +1,1 @@
+# LLM based assistants for business functions. This repository is a collection of POCs developed using Python and Streamlit to demonstrate how ChatGPT LLM can be used for automating the different stages of a process

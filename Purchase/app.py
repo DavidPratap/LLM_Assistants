@@ -1,13 +1,14 @@
 import openai
 import pandas as pd
 import streamlit as st    # Open-source Python Library framework to deliver dynamic data apps
+import os
 
 # Set your OpenAI API key here
-
+client=openai.OpenAI(api_key="sk-None-DuOtAWoH3laz6yJtDaHpT3BlbkFJNyAM7dptZMZg8D22bUSH")
 
 # Function to generate technical requirements from business requirements
 def generate_technical_requirements(business_requirements):
-    response = openai.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are an expert in transforming business requirements into detailed technical specifications."},
@@ -38,7 +39,7 @@ if submit_button:
 # Function to generate tender from technical requirements
 
 def generate_tender(technical_requirements):
-    response = openai.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are the purchase manager of a large business. It is your responsiblity to create a tender document out of the technical reqirements."},
@@ -69,7 +70,7 @@ vendor_hist = pd.read_csv(uploaded_file)
 # Evaluate vendors 
 
 def vendor_evaluation(vendor_hist):
-    response = openai.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are the purchase manager of a large business. It is your responsiblity to select potential suppliers from a list of potential vendors based on their past performance."},

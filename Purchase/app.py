@@ -29,7 +29,7 @@ with st.form(key='requirements_form'):
     submit_button = st.form_submit_button(label='Generate Technical Requirements')
 
 # Process input and display output
-if submit_button:
+if st.button():
     technical_requirements = generate_technical_requirements(business_requirements)
     st.header("Generated Technical Requirements")
     st.text(technical_requirements)
